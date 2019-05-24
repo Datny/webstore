@@ -13,7 +13,7 @@ def allProdCat(request,c_slug=None):
     product = None
     if c_page!=None:
         c_page = get_object_or_404(Category,slug=c_slug)
-        products = Product.objects.filter(category=c_page,available=True)
+        product = Product.objects.filter(category=c_page,available=True)
     else:
-        products = Product.objects.all().filter(available=True)
-    return render(request,'mysite/category.html', {'category': c_page, 'products': products})
+        product = Product.objects.all().filter(available=True)
+    return render(request, 'mysite/category.html', {'category': c_page, 'products': product})

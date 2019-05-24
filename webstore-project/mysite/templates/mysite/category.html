@@ -1,0 +1,30 @@
+{%extends "base.html"%}
+{% load staticfiles %}
+{% block metadescription %}
+    {%if category %}
+    {{category.description|truncatewords:155}}
+    {%else%}
+    Buy spider, spiders are kewl
+    {%endif%}
+{% endblock %}
+{% block title %}
+    {%if category %}
+    {{category.name}} - Spider Store
+    {%else%}
+    Check out our spiders!
+    {%endif%}
+{% endblock %}
+{% block content %}
+{% if category%}
+<div>
+    <div>
+        <p><a href="{% url 'mysite:allProdCat'%}"></a>|{{category.name}}</p>
+    </div>
+</div>
+<div>
+    <div>
+        <p><img src="{%category.image.url %}" alt=""/>|</p>
+    </div>
+</div>
+{%endif%}
+{% endblock %}
